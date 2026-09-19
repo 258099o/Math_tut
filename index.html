@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Professor Kamlesh Kumar Shukla - Meeting</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #202124;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    width: 92%;
+    max-width: 430px;
+    background: #292a2d;
+    border-radius: 16px;
+    padding: 28px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+}
+
+.meet-logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.meet-logo span {
+    color: #8ab4f8;
+}
+
+.video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #111;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 22px;
+    color: #aaa;
+}
+
+.avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: #5f6368;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+}
+
+h1 {
+    font-size: 21px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #bdc1c6;
+    font-size: 14px;
+    margin-bottom: 22px;
+}
+
+.join-btn {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 24px;
+    background: #8ab4f8;
+    color: #202124;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.join-btn:hover {
+    background: #aecbfa;
+}
+
+/* Popup */
+
+.overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.82);
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.popup {
+    width: 90%;
+    max-width: 380px;
+    background: #292a2d;
+    border-radius: 18px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+}
+
+.popup h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.timer {
+    font-size: 52px;
+    font-weight: bold;
+    color: #8ab4f8;
+    margin: 15px 0;
+}
+
+.message {
+    color: #bdc1c6;
+    line-height: 1.5;
+}
+
+.prank {
+    display: none;
+    color: #81c995;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.warning {
+    margin-top: 18px;
+    font-size: 12px;
+    color: #9aa0a6;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <div class="meet-logo">
+        <span>Meet</span> • Study Session
+    </div>
+
+    <div class="video">
+        <div class="avatar">KK</div>
+    </div>
+
+    <h1>Professor Kamlesh Kumar Shukla</h1>
+
+    <p class="subtitle">
+        Study Group Session
+    </p>
+
+    <button class="join-btn" onclick="startPrank()">
+        Join Meeting
+    </button>
+
+</div>
+
+
+<!-- Popup -->
+
+<div class="overlay" id="overlay">
+
+    <div class="popup">
+
+        <h2>Connecting...</h2>
+
+        <div class="timer" id="timer">
+            10
+        </div>
+
+        <p class="message" id="message">
+            Connecting to the meeting...
+        </p>
+
+        <div class="prank" id="prank">
+            😂 PRANK!
+        </div>
+
+        <p class="warning">
+            This is a parody/prank page, not an actual Google Meet meeting.
+        </p>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function startPrank() {
+
+    const overlay = document.getElementById("overlay");
+    const timer = document.getElementById("timer");
+    const message = document.getElementById("message");
+    const prank = document.getElementById("prank");
+
+    overlay.style.display = "flex";
+
+    let count = 10;
+
+    timer.textContent = count;
+
+    const countdown = setInterval(function() {
+
+        count--;
+
+        timer.textContent = count;
+
+        if (count === 7) {
+            message.textContent =
+                "Checking microphone and camera...";
+        }
+
+        if (count === 5) {
+            message.textContent =
+                "Joining Professor Kamlesh Kumar Shukla...";
+        }
+
+        if (count === 3) {
+            message.textContent =
+                "Almost connected...";
+        }
+
+        if (count <= 0) {
+
+            clearInterval(countdown);
+
+            timer.style.display = "none";
+
+            message.textContent =
+                "You really thought this was a meeting? 😭";
+
+            prank.style.display = "block";
+        }
+
+    }, 1000);
+}
+
+</script>
+
+</body>
+</html>
