@@ -3,256 +3,386 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Professor Kamlesh Kumar Shukla - Meeting</title>
+<title>Google Meet - abc-defg-hij</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
 }
 
 body {
-    background: #202124;
-    color: white;
+    background-color: #202124;
+    color: #ffffff;
+    font-family: 'Google Sans', Roboto, Arial, sans-serif;
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 20px;
+    color: #e8eaed;
+    font-weight: 500;
+}
+
+.user-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.account-email {
+    font-size: 13px;
+    color: #9aa0a6;
+    font-family: 'Roboto', sans-serif;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #1a73e8;
+    color: white;
+    display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
 }
 
-.card {
-    width: 92%;
-    max-width: 430px;
-    background: #292a2d;
-    border-radius: 16px;
-    padding: 28px;
-    text-align: center;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+/* Main Container */
+main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 64px;
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
 }
 
-.meet-logo {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 25px;
+/* Video Preview Column */
+.preview-pane {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 580px;
 }
 
-.meet-logo span {
-    color: #8ab4f8;
-}
-
-.video {
+.video-frame {
     width: 100%;
     aspect-ratio: 16 / 9;
-    background: #111;
-    border-radius: 12px;
+    background-color: #3c4043;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 22px;
-    color: #aaa;
 }
 
-.avatar {
-    width: 70px;
-    height: 70px;
+.avatar-circle {
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
-    background: #5f6368;
+    background-color: #ea4335;
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 28px;
+    font-size: 42px;
+    font-weight: 500;
 }
 
-h1 {
-    font-size: 21px;
+.video-status {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    background: rgba(32, 33, 36, 0.7);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #e8eaed;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.controls-bar {
+    display: flex;
+    gap: 16px;
+    margin-top: -24px;
+    z-index: 2;
+}
+
+.circle-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background-color: #ea4335; /* Disabled red by default */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    transition: background 0.2s;
+}
+
+.circle-btn svg {
+    width: 22px;
+    height: 22px;
+    fill: currentColor;
+}
+
+/* Join Actions Column */
+.join-pane {
+    max-width: 360px;
+    width: 100%;
+    text-align: left;
+}
+
+.join-pane h1 {
+    font-size: 28px;
+    font-weight: 400;
     margin-bottom: 8px;
 }
 
-.subtitle {
-    color: #bdc1c6;
+.meeting-host {
     font-size: 14px;
-    margin-bottom: 22px;
+    color: #9aa0a6;
+    line-height: 1.5;
+    margin-bottom: 32px;
 }
 
-.join-btn {
-    width: 100%;
-    padding: 13px;
+.meeting-host strong {
+    color: #e8eaed;
+    font-weight: 500;
+}
+
+.join-buttons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.btn-primary {
+    background-color: #1a73e8;
+    color: white;
     border: none;
-    border-radius: 24px;
-    background: #8ab4f8;
-    color: #202124;
-    font-size: 16px;
-    font-weight: bold;
+    padding: 0 24px;
+    height: 44px;
+    border-radius: 22px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #1b66c9;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #8ab4f8;
+    border: 1px solid #5f6368;
+    padding: 0 20px;
+    height: 44px;
+    border-radius: 22px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
     cursor: pointer;
 }
 
-.join-btn:hover {
-    background: #aecbfa;
+.btn-secondary:hover {
+    background-color: rgba(138, 180, 248, 0.04);
 }
 
-/* Popup */
+.other-options {
+    border-top: 1px solid #3c4043;
+    padding-top: 16px;
+    color: #9aa0a6;
+    font-size: 13px;
+    line-height: 1.6;
+}
 
-.overlay {
+/* Prank / Joining Screen Overlay */
+.connecting-overlay {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.82);
+    background-color: #202124;
+    z-index: 100;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    z-index: 10;
 }
 
-.popup {
-    width: 90%;
-    max-width: 380px;
-    background: #292a2d;
-    border-radius: 18px;
-    padding: 30px;
-    text-align: center;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+.spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid #3c4043;
+    border-top: 4px solid #1a73e8;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 24px;
 }
 
-.popup h2 {
-    font-size: 24px;
-    margin-bottom: 15px;
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-.timer {
-    font-size: 52px;
-    font-weight: bold;
-    color: #8ab4f8;
-    margin: 15px 0;
+.status-text {
+    font-size: 18px;
+    color: #e8eaed;
 }
 
-.message {
-    color: #bdc1c6;
-    line-height: 1.5;
-}
-
-.prank {
+.reveal-box {
     display: none;
-    color: #81c995;
-    font-size: 24px;
-    font-weight: bold;
-    margin-top: 15px;
+    text-align: center;
+    max-width: 400px;
+    padding: 24px;
 }
 
-.warning {
-    margin-top: 18px;
-    font-size: 12px;
+.reveal-box h2 {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.reveal-box p {
     color: #9aa0a6;
+    line-height: 1.5;
+    margin-bottom: 24px;
+}
+
+@media (max-width: 860px) {
+    main {
+        flex-direction: column;
+        gap: 32px;
+        padding-top: 0;
+    }
+    .join-pane {
+        text-align: center;
+    }
+    .join-buttons {
+        justify-content: center;
+    }
 }
 </style>
 </head>
-
 <body>
 
-<div class="card">
-
-    <div class="meet-logo">
-        <span>Meet</span> • Study Session
+<header>
+    <div class="logo-area">
+        <svg width="36" height="30" viewBox="0 0 192 154" fill="none">
+            <rect width="107" height="154" rx="16" fill="#00832d"/>
+            <path d="M192 38.5L138 77L192 115.5V38.5Z" fill="#00ac47"/>
+            <path d="M138 31V123C138 131.837 130.837 139 122 139H16C7.16344 139 0 131.837 0 123V31C0 22.1634 7.16344 15 16 15H122C130.837 15 138 22.1634 138 31Z" fill="#00832d"/>
+            <path d="M107 0H31C13.8792 0 0 13.8792 0 31V77H138V31C138 13.8792 124.121 0 107 0Z" fill="#ffba00"/>
+            <path d="M138 77H0V123C0 140.121 13.8792 154 31 154H107C124.121 154 138 140.121 138 123V77Z" fill="#2684fc"/>
+            <path d="M192 38.5L138 77V115.5L192 77V38.5Z" fill="#0066da"/>
+        </svg>
+        <span>Google Meet</span>
     </div>
-
-    <div class="video">
-        <div class="avatar">KK</div>
+    <div class="user-area">
+        <span class="account-email">student@institution.edu</span>
+        <div class="user-avatar">S</div>
     </div>
+</header>
 
-    <h1>Professor Kamlesh Kumar Shukla</h1>
-
-    <p class="subtitle">
-        Study Group Session
-    </p>
-
-    <button class="join-btn" onclick="startPrank()">
-        Join Meeting
-    </button>
-
-</div>
-
-
-<!-- Popup -->
-
-<div class="overlay" id="overlay">
-
-    <div class="popup">
-
-        <h2>Connecting...</h2>
-
-        <div class="timer" id="timer">
-            10
+<main>
+    <div class="preview-pane">
+        <div class="video-frame">
+            <div class="avatar-circle">S</div>
+            <div class="video-status">Camera is off</div>
         </div>
+        <div class="controls-bar">
+            <!-- Mic Off Icon -->
+            <button class="circle-btn" aria-label="Toggle mic">
+                <svg viewBox="0 0 24 24"><path d="M19 11h-1.7c0 3.02-2.48 5.5-5.3 5.5s-5.3-2.48-5.3-5.5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92zM12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/></svg>
+            </button>
+            <!-- Camera Off Icon -->
+            <button class="circle-btn" aria-label="Toggle camera">
+                <svg viewBox="0 0 24 24"><path d="M21 6.5l-4 4V7c0-.55-.45-1-1-1H9.82L21 17.18V6.5zM3.27 2L2 3.27 4.73 6H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.21 0 .39-.08.54-.18L19.73 21 21 19.73 3.27 2zM5 16V8h1.27l8 8H5z"/></svg>
+            </button>
+        </div>
+    </div>
 
-        <p class="message" id="message">
-            Connecting to the meeting...
+    <div class="join-pane">
+        <h1>Ready to join?</h1>
+        <p class="meeting-host">
+            <strong>Professor Kamlesh Kumar Shukla</strong> is in this call.<br>
+            2 other participants waiting.
         </p>
 
-        <div class="prank" id="prank">
-            😂 PRANK!
+        <div class="join-buttons">
+            <button class="btn-primary" onclick="triggerJoin()">Join now</button>
+            <button class="btn-secondary">Present</button>
         </div>
 
-        <p class="warning">
-            This is a parody/prank page, not an actual Google Meet meeting.
-        </p>
-
+        <div class="other-options">
+            <p>Joining info: meet.google.com/abc-defg-hij</p>
+            <p style="margin-top: 4px;">Dial-in: (US) +1 123-456-7890 PIN: 482 192#</p>
+        </div>
     </div>
+</main>
 
+<div class="connecting-overlay" id="loaderOverlay">
+    <div class="spinner" id="spinner"></div>
+    <div class="status-text" id="joinStatus">Asking to be let in...</div>
+
+    <div class="reveal-box" id="prankReveal">
+        <h2>Gotcha! 💀</h2>
+        <p>No lectures today. This was an inspection link!</p>
+        <button class="btn-primary" onclick="location.reload()">Reload</button>
+    </div>
 </div>
-
 
 <script>
+function triggerJoin() {
+    const overlay = document.getElementById('loaderOverlay');
+    const status = document.getElementById('joinStatus');
+    const spinner = document.getElementById('spinner');
+    const reveal = document.getElementById('prankReveal');
 
-function startPrank() {
+    overlay.style.display = 'flex';
 
-    const overlay = document.getElementById("overlay");
-    const timer = document.getElementById("timer");
-    const message = document.getElementById("message");
-    const prank = document.getElementById("prank");
+    setTimeout(() => {
+        status.textContent = 'Professor Kamlesh Kumar Shukla admitted you...';
+    }, 1800);
 
-    overlay.style.display = "flex";
-
-    let count = 10;
-
-    timer.textContent = count;
-
-    const countdown = setInterval(function() {
-
-        count--;
-
-        timer.textContent = count;
-
-        if (count === 7) {
-            message.textContent =
-                "Checking microphone and camera...";
-        }
-
-        if (count === 5) {
-            message.textContent =
-                "Joining Professor Kamlesh Kumar Shukla...";
-        }
-
-        if (count === 3) {
-            message.textContent =
-                "Almost connected...";
-        }
-
-        if (count <= 0) {
-
-            clearInterval(countdown);
-
-            timer.style.display = "none";
-
-            message.textContent =
-                "You really thought this was a meeting? 😭";
-
-            prank.style.display = "block";
-        }
-
-    }, 1000);
+    setTimeout(() => {
+        spinner.style.display = 'none';
+        status.style.display = 'none';
+        reveal.style.display = 'block';
+    }, 3800);
 }
-
 </script>
 
 </body>
